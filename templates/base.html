@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Street Legends</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/coroa.png') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo-area">
+        <img src="{{ url_for('static', filename='img/coroa.png') }}" class="logo">
+        <span>Street Legends</span>
+    </div>
+
+    <div class="menu">
+        <a href="/">Home</a>
+        <a href="{{ url_for('produtos') }}">Produtos</a>
+        <a href="{{ url_for('cadastro') }}">Cadastro</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('carrinho') }}">Carrinho</a>
+    </div>
+</nav>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>© 2026 Street Legends</p>
+</footer>
+
+</body>
+</html>

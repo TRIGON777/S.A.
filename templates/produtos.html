@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="GET" class="filtro">
+    <select name="categoria">
+        <option value="">Todas categorias</option>
+        <option value="tenis" {% if categoria == "tenis" %}selected{% endif %}>Tênis</option>
+        <option value="camisa" {% if categoria == "camisa" %}selected{% endif %}>Camisa</option>
+        <option value="moletom" {% if categoria == "moletom" %}selected{% endif %}>Moletom</option>
+        <option value="calca" {% if categoria == "calca" %}selected{% endif %}>Calça</option>
+        <option value="bone" {% if categoria == "bone" %}selected{% endif %}>Boné</option>
+    </select>
+
+    <button type="submit">Filtrar</button>
+</form>
+
+<h1 class="titulo">Produtos</h1>
+
+<div class="grid-produtos">
+    {% for p in produtos %}
+    <div class="card-produto">
+        <h2>{{ p[1] }}</h2>
+        <p>R$ {{ p[2] }}</p>
+
+        <img src="{{ url_for('static', filename='img/' + p[3]) }}">
+
+        <a href="/add_carrinho/{{ p[0] }}">
+            <button class="button_remover">Comprar</button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

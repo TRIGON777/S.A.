@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Carrinho</h1>
+
+{% for p in produtos %}
+<div class="card-carrinho">
+
+    <img src="{{ url_for('static', filename='img/' + p[3]) }}">
+
+    <div class="info">
+        <h2>{{ p[1] }}</h2>
+        <p>R$ {{ p[2] }}</p>
+    </div>
+
+    <a href="/remover_carrinho/{{ p[0] }}">
+        <button class="button_remover">Remover</button>
+    </a>
+
+</div>
+{% endfor %}
+
+<div class="resumo-compra">
+    <h2>Total: R$ {{ total }}</h2>
+    <a href="/pagamento">
+        <button class="finalizar">Finalizar Compra</button>
+    </a>
+</div>
+
+{% endblock %}

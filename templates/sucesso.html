@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Compra realizada com sucesso!</h1>
+
+{% if forma == 'cartao' %}
+    <p>Pagamento aprovado no cartão 💳</p>
+{% endif %}
+
+{% if forma == 'pix' %}
+    <p>Pagamento via Pix </p>
+
+    <h3>Código Pix:</h3>
+    <p><strong>{{ codigo_pix }}</strong></p>
+
+    <h3>QR Code:</h3>
+    <img src="/{{ qr_code }}" width="200">
+{% endif %}
+
+<a href="/produtos">
+    <button class="button_remover">Voltar para loja</button>
+</a>
+
+{% endblock %}

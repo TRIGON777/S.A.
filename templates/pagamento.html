@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Pagamento</h1>
+
+{% if etapa == "escolher" %}
+<form method="POST" class="opcoes-pagamento">
+    <input type="hidden" name="etapa" value="forma">
+
+    <button name="forma" value="cartao" class="opcao-btn cartao-btn">
+        Cartão
+    </button>
+
+    <button name="forma" value="pix" class="opcao-btn pix-btn">
+        Pix
+    </button>
+</form>
+{% endif %}
+
+{% if etapa == "dados" and forma == "cartao" %}
+<h2>Pagamento com Cartão</h2>
+
+<form method="POST">
+    <input type="hidden" name="etapa" value="finalizar">
+    <input type="hidden" name="forma" value="cartao">
+
+    <input type="text" name="numero" placeholder="Número do Cartão" required>
+    <input type="text" name="nome" placeholder="Nome no Cartão" required>
+    <input type="text" name="validade" placeholder="Validade (MM/AA)" required>
+    <input type="text" name="cvv" placeholder="CVV" required>
+
+    <button class="button_remover" type="submit">Finalizar Pagamento</button>
+</form>
+
+<a href="/pagamento">
+    <button class="button_remover" type="button">Voltar</button>
+</a>
+{% endif %}
+
+{% if etapa == "dados" and forma == "pix" %}
+<h2>Pagamento via Pix</h2>
+
+<form method="POST">
+    <input type="hidden" name="etapa" value="finalizar">
+    <input type="hidden" name="forma" value="pix">
+
+    <button class="button_remover" type="submit">Gerar Pix</button>
+</form>
+
+<a href="/pagamento">
+    <button class="button_remover" type="button">Voltar</button>
+</a>
+{% endif %}
+
+{% endblock %}
