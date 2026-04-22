@@ -22,7 +22,7 @@
 {% endfor %}
 
 <div class="resumo-compra">
-    <h2>Total: R$ {{ total }}</h2>
+    <h2>Total: R$ {{ "%.2f"|format(total) }}</h2>
     <a href="/pagamento">
         <button class="finalizar">Finalizar Compra</button>
     </a>
